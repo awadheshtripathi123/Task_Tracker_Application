@@ -2,9 +2,9 @@ import express, { urlencoded } from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 // Routes Import
-import taskRoute from './routes/taskroute.js';
-import userRoute from './routes/userroute.js';
-import authRoute from './routes/authroute.js';
+import taskRoute from './routes/taskRoute.js';
+import userRoute from './routes/userRoute.js';
+import authRoute from './routes/authRoute.js';
 
 const app = express();
 
