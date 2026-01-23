@@ -21,8 +21,9 @@ const Register = () => {
         password
       });
       navigate("/login");
-    } catch {
-      setError("Registration failed");
+    } catch (err) {
+      console.error("Registration error:", err);
+      setError(err.response?.data?.message || "Registration failed - Backend unavailable");
     }
   };
 
