@@ -9,7 +9,7 @@ import authRoute from './routes/authRoute.js';
 const app = express();
 
 app.use(cors({
-  origin: ["http://localhost:3001"],
+  origin: ["https://task-tracker-application-xi.vercel.app"],
   credentials: true
 }))
 
