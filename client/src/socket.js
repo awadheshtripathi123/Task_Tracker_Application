@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5000 || https://task-tracker-backend.onrender.com", {
+const socket = io("https://task-tracker-application-1-3iyx.onrender.com", {
   transports: ["websocket"]
 });
 
