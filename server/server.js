@@ -10,7 +10,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "https://task-tracker-system.vercel.app || http://localhost:3000",
+    origin: "https://task-tracker-application-xi.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
   }
 });

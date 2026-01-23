@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://task-tracker-application-1-3iyx.onrender.com",
-  withCredentials: true,
+  baseURL: "https://task-tracker-application-1-3iyx.onrender.com/api",
+  withCredentials: true
 });
 
 api.interceptors.request.use((config) => {

@@ -9,7 +9,7 @@ import authRoute from './routes/authRoute.js';
 const app = express();
 
 app.use(cors({
-  origin: `process.env.CORS_ORIGIN`,
+  origin: ["http://localhost:3001"],
   credentials: true
 }))
 
