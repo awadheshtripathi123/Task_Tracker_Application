@@ -7,7 +7,8 @@ const CreateTask = () => {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [assignedUsers, setAssignedUsers] = useState("");
+  const [status, setStatus] = useState("To Do");
+  const [deadline, setDeadline] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
@@ -18,7 +19,8 @@ const CreateTask = () => {
       await api.post("/tasks", {
         title,
         description,
-        assignedUsers: assignedUsers.split(",").map(id => id.trim())
+        status,
+        Deadline: deadline ? new Date(deadline).toISOString() : null
       });
       navigate("/tasks");
     } catch {
@@ -46,10 +48,21 @@ const CreateTask = () => {
             onChange={(e) => setDescription(e.target.value)}
           />
 
+          <select
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="To Do">To Do</option>
+            <option value="in-progress">In Progress</option>
+            <option value="Review">Review</option>
+            <option value="Done">Done</option>
+            <option value="Blocked">Blocked</option>
+          </select>
+
           <input
-            placeholder="Assigned user IDs (comma separated)"
-            value={assignedUsers}
-            onChange={(e) => setAssignedUsers(e.target.value)}
+            type="date"
+            value={deadline}
+            onChange={(e) => setDeadline(e.target.value)}
           />
 
           <button type="submit">Create Task</button>

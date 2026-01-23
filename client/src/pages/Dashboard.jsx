@@ -11,18 +11,21 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await api.get("/users/me");
-        setUser(res.data);
+        const res = await api.get("/user");
+        setUser(res.data.user);
       } catch {
         logout();
         navigate("/login");
       }
     };
     fetchUser();
-  }, []);
+  }, [logout, navigate]);
 
   const handleLogout = async () => {
-    await api.post("/auth/logout");
+    const refreshToken = localStorage.getItem("refreshToken");
+    if (refreshToken) {
+      await api.post("/logout", { refreshToken });
+    }
     logout();
     navigate("/login");
   };

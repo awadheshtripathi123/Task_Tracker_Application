@@ -8,7 +8,7 @@ const AdminTasks = () => {
 
   const fetchAllTasks = async () => {
     try {
-      const res = await api.get("/tasks/admin/all");
+      const res = await api.get("/admin/tasks");
       setTasks(res.data);
     } catch {
       navigate("/");
@@ -17,11 +17,12 @@ const AdminTasks = () => {
 
   useEffect(() => {
     fetchAllTasks();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const deleteTask = async (id) => {
     if (!window.confirm("Delete this task?")) return;
-    await api.delete(`/tasks/admin/${id}`);
+    await api.delete(`/admin/tasks/${id}`);
     fetchAllTasks();
   };
 

@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/user.js';  
+import User from '../models/user.js';
 
 export const refreshAccessToken = async (req, res) => {
   try {
@@ -7,6 +7,7 @@ export const refreshAccessToken = async (req, res) => {
     if (!refreshToken) {
       return res.status(400).json({ message: 'Refresh token is required' });
     } 
+    
     const decoded = jwt.verify(
       refreshToken, 
       process.env.REFRESH_TOKEN_SECRET
@@ -17,6 +18,7 @@ export const refreshAccessToken = async (req, res) => {
     if (!user) {
       return res.status(401).json({ message: 'Invalid refresh token' });
     } 
+    
     const newAccessToken = user.generateAccessToken();
 
     res.status(200).json({ accessToken: newAccessToken });
@@ -24,6 +26,7 @@ export const refreshAccessToken = async (req, res) => {
     res.status(401).json({ message: 'Invalid refresh token' });
   } 
 };
+
 
 export const login = async (req, res) => {
   try {
@@ -37,7 +40,7 @@ export const login = async (req, res) => {
     const refreshToken = user.generateRefreshToken();
 
     user.refreshToken = refreshToken;
-    await user.save();
+    await user.save({ validateBeforeSave: false });
 
     res.status(200).json({ accessToken, refreshToken });
   } catch (error) {

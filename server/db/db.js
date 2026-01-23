@@ -1,9 +1,12 @@
 import mongoose from 'mongoose'; 
-const DB_NAME = 'task_tracker_db';
+// const DB_NAME = 'task_tracker_db';
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const connectDB = async () => {
   try {
-    const connectionInstance = await mongoose.connect(`${process.env.MONGO_URI}/${DB_NAME}`);
+    const connectionInstance = await mongoose.connect(`${process.env.MONGO_URI}`);
     console.log(`\n MongoDB connected !! DB Host: ${connectionInstance.connection.host}`);
   } 
   catch (error) {
@@ -13,3 +16,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+

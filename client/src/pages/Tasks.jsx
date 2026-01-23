@@ -8,7 +8,7 @@ const Tasks = () => {
   const navigate = useNavigate();
 
   const fetchTasks = async () => {
-    const res = await api.get("/tasks/my");
+    const res = await api.get("/tasks");
     setTasks(res.data);
   };
 
@@ -27,10 +27,12 @@ const Tasks = () => {
 
   const updateStatus = async (id, status) => {
     await api.put(`/tasks/${id}`, { status });
+    fetchTasks();
   };
 
   const deleteTask = async (id) => {
     if (!window.confirm("Delete this task?")) return;
+    fetchTasks();
     await api.delete(`/tasks/${id}`);
   };
 

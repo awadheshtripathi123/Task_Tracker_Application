@@ -2,3 +2,8 @@ node_modules/
 .env
 client/build/
 npm-debug.log*
+simple-test.js
+tet-apis.js
+integration-test.js
+test-full-stack.ps1
+jwt.js

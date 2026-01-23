@@ -24,8 +24,8 @@ app.use('/api', taskRoute);
 app.use('/api', userRoute);
 app.use('/api', authRoute);
 
-app.get("/api/test", (req, res) => {
-  res.json({ message: "Backend connected successfully" });
-});
+// app.get("/api/test", (req, res) => {
+//   res.json({ message: "Backend connected successfully" });
+// });
 
 export default app;
